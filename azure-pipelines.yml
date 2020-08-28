@@ -14,15 +14,17 @@ steps:
     solution: '**\*.sln'
     vsVersion: '16.0'
   
-- task: CmdLine@2
+- task: SqlAzureDacpacDeployment@1
   inputs:
-    script: |
-     "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\130\sqlpackage.exe"
-     /Action:publish
-     /SourceFile:src\$(dbProject)\bin\Debug\$(dbProject).dacpac
-     /TargetServerName:'sqlautomatedchanges'
-     /TargetDatabaseName:'basicdatabase'
-     /TargetUser:'ranjit123'
-     /TargetPassword:'$(passwordVariable)'
+    azureSubscription: 'Azure subscription 1(c731920e-f389-4198-98b9-bb54ff8f6bde)'
+    AuthenticationType: 'server'
+    ServerName: 'sqlautomatedchanges.database.windows.net'
+    DatabaseName: 'basicdatabase'
+    SqlUsername: 'ranjit123'
+    SqlPassword: '$(passwordVariable)'
+    deployType: 'DacpacTask'
+    DeploymentAction: 'Publish'
+    DacpacFile: '**\*.dacpac'
+    IpDetectionMethod: 'AutoDetect'
      
 
