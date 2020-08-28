@@ -1,0 +1,25 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: VSBuild@1
+  displayName: Build DB Project
+  inputs:
+    solution: '**\*.sln'
+    vsVersion: '16.0'
+  
+- task: CmdLine@2
+  inputs:
+    script: |
+     "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\130\sqlpackage.exe"
+     /Action:publish
+     /SourceFile:'**\*.dacpac'
+     /outputpath:db-script.sql
+     /TargetServerName:'sqlautomatedchanges'
+     /TargetDatabaseName:'basicdatabase'
+     /TargetUser:'ranjit123'
+     /TargetPassword:'$(passwordVariable)'
+
