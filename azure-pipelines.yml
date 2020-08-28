@@ -16,7 +16,7 @@ steps:
     script: |
      "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\130\sqlpackage.exe"
      /Action:publish
-     /SourceFile:'\bin\Debug\BasicDatabase.dacpac'
+     /SourceFile:\bin\Debug\BasicDatabase.dacpac
      /TargetServerName:'sqlautomatedchanges'
      /TargetDatabaseName:'basicdatabase'
      /TargetUser:'ranjit123'
