@@ -4,6 +4,9 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
+variables:
+  dbProject:'BasicDatabase'
+
 steps:
 - task: VSBuild@1
   displayName: Build DB Project
@@ -16,7 +19,7 @@ steps:
     script: |
      "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\130\sqlpackage.exe"
      /Action:publish
-     /SourceFile:**\*.dacpac
+     /SourceFile:src\$(dbProject)\bin\Debug\$(dbProject).dacpac
      /TargetServerName:'sqlautomatedchanges'
      /TargetDatabaseName:'basicdatabase'
      /TargetUser:'ranjit123'
