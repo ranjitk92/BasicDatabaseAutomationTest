@@ -1,3 +1,2 @@
 # BasicDatabaseAutomationTest
-Testing CI for Databases
-Template solution and project file for building an empty database.
+Testing CI deploying a solution to a newly created SQL database.
