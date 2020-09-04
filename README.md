@@ -1,2 +1,2 @@
 # BasicDatabaseAutomationTest
-Testing CI deploying a solution to a newly created SQL database.
+Testing CI for deploying a SQL solution to a newly created SQL database.
